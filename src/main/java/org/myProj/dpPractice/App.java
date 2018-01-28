@@ -1,4 +1,4 @@
-package org.myProj.dpPractice.dpPractice;
+package org.myProj.dpPractice;
 
 /**
  * Hello world!
