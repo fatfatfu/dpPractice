@@ -1,5 +1,8 @@
 package org.myProj.dpPractice.dpPractice;
 
+import org.myProj.dpPractice.domain.OperationFather;
+import org.myProj.dpPractice.domain.SimpleOperation;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -33,6 +36,10 @@ public class AppTest
      */
     public void testApp()
     {
-        assertTrue( true );
+        OperationFather op = SimpleOperation.getInstance("+");
+        op.setNumA(1);
+        op.setNumB(2);
+        assertEquals(op.getResult(), 4, 0);
+//        assertTrue( true );
     }
 }
