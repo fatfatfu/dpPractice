@@ -1,6 +1,9 @@
 package org.myProj.dpPractice.dpPractice;
 
+import org.myProj.dpPractice.StrategyDesignPattern.StrategyOperation;
+import org.myProj.dpPractice.domain.OperationAddV2;
 import org.myProj.dpPractice.domain.OperationFather;
+import org.myProj.dpPractice.domain.OperationSubV2;
 import org.myProj.dpPractice.domain.SimpleOperation;
 
 import junit.framework.Test;
@@ -39,7 +42,16 @@ public class AppTest
         OperationFather op = SimpleOperation.getInstance("+");
         op.setNumA(1);
         op.setNumB(2);
-        assertEquals(op.getResult(), 4, 0);
+        assertEquals(op.getResult(), 3, 0);
 //        assertTrue( true );
     }
+    
+    public void testApp2()
+    {
+    	StrategyOperation strategyOperation = new StrategyOperation(new OperationAddV2());
+    	assertEquals(strategyOperation.execStrategy(10, 5), 15, 0);
+    	strategyOperation = new StrategyOperation(new OperationSubV2());
+     	assertEquals(strategyOperation.execStrategy(10, 5), 5, 0);
+    }
+    
 }
