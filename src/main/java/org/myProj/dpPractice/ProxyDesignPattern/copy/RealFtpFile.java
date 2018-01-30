@@ -14,7 +14,7 @@ public class RealFtpFile implements FtpFile {
 	}
 
 	public void loadFromDisk(String fileName) {
-		System.out.println("Loadind " + fileName + " from disk");
+		System.out.println("Loading " + fileName + " from disk");
 	}
 
 }
