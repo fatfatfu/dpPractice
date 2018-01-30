@@ -1,5 +1,8 @@
 package org.myProj.dpPractice;
 
+import org.myProj.dpPractice.DecoratorDesignPattern.Circle;
+import org.myProj.dpPractice.DecoratorDesignPattern.ColorShapeDecorator;
+import org.myProj.dpPractice.DecoratorDesignPattern.Shape;
 import org.myProj.dpPractice.StrategyDesignPattern.StrategyOperation;
 import org.myProj.dpPractice.domain.OperationAddV2;
 import org.myProj.dpPractice.domain.OperationFather;
@@ -18,6 +21,9 @@ public class App
         simpleFactory();
         System.out.println( "Stregy Pattern:" );
         strategyPattern();
+        System.out.println( "Decorator Pattern:" );
+        decoratorPattern();
+        
     }
     
     public static void simpleFactory(){
@@ -32,6 +38,14 @@ public class App
     	System.out.println("execute straegy(ADD) : "+strategyOperation.execStrategy(10, 5));
     	strategyOperation = new StrategyOperation(new OperationSubV2());
     	System.out.println("execute straegy(SUB) : "+strategyOperation.execStrategy(10, 5));
-    	
+    }
+    
+    public static void decoratorPattern(){
+    	Shape circle = new Circle();
+    	System.out.println("normal circle :");
+    	circle.draw();
+    	Shape coloredCircle = new ColorShapeDecorator(new Circle());
+    	System.out.println("circle with color:");
+    	coloredCircle.draw();
     }
 }
