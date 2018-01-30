@@ -3,6 +3,8 @@ package org.myProj.dpPractice;
 import org.myProj.dpPractice.DecoratorDesignPattern.Circle;
 import org.myProj.dpPractice.DecoratorDesignPattern.ColorShapeDecorator;
 import org.myProj.dpPractice.DecoratorDesignPattern.Shape;
+import org.myProj.dpPractice.ProxyDesignPattern.copy.FtpFile;
+import org.myProj.dpPractice.ProxyDesignPattern.copy.ProxyFtpFile;
 import org.myProj.dpPractice.StrategyDesignPattern.StrategyOperation;
 import org.myProj.dpPractice.domain.OperationAddV2;
 import org.myProj.dpPractice.domain.OperationFather;
@@ -23,6 +25,8 @@ public class App
         strategyPattern();
         System.out.println( "Decorator Pattern:" );
         decoratorPattern();
+        System.out.println( "Proxy Pattern:" );
+        proxyPattern();
         
     }
     
@@ -47,5 +51,12 @@ public class App
     	Shape coloredCircle = new ColorShapeDecorator(new Circle());
     	System.out.println("circle with color:");
     	coloredCircle.draw();
+    }
+    
+    public static void proxyPattern(){
+    	FtpFile file = new ProxyFtpFile("test.txt");
+    	file.unzip();
+    	System.out.println("....");
+    	file.unzip();
     }
 }
