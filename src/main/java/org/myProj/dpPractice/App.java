@@ -3,6 +3,8 @@ package org.myProj.dpPractice;
 import org.myProj.dpPractice.DecoratorDesignPattern.Circle;
 import org.myProj.dpPractice.DecoratorDesignPattern.ColorShapeDecorator;
 import org.myProj.dpPractice.DecoratorDesignPattern.Shape;
+import org.myProj.dpPractice.FactoryMethodDesignPattern.Ifactory;
+import org.myProj.dpPractice.FactoryMethodDesignPattern.OperationFactory;
 import org.myProj.dpPractice.ProxyDesignPattern.copy.FtpFile;
 import org.myProj.dpPractice.ProxyDesignPattern.copy.ProxyFtpFile;
 import org.myProj.dpPractice.StrategyDesignPattern.StrategyOperation;
@@ -26,6 +28,8 @@ public class App
         System.out.println( "Decorator Pattern:" );
         decoratorPattern();
         System.out.println( "Proxy Pattern:" );
+        proxyPattern();
+        System.out.println( "Factory Method Pattern:" );
         proxyPattern();
         
     }
@@ -58,5 +62,13 @@ public class App
     	file.unzip();
     	System.out.println("....");
     	file.unzip();
+    }
+    
+    public static void factoryMethodPattern(){
+    	OperationFactory factory = new OperationFactory();
+    	Ifactory f1 = factory.getOperation("ADD");
+    	f1.createOperaion();
+       	Ifactory f2 = factory.getOperation("SUB");
+       	f2.createOperaion();
     }
 }
