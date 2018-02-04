@@ -3,6 +3,7 @@ package org.myProj.dpPractice;
 import org.myProj.dpPractice.DecoratorDesignPattern.Circle;
 import org.myProj.dpPractice.DecoratorDesignPattern.ColorShapeDecorator;
 import org.myProj.dpPractice.DecoratorDesignPattern.Shape;
+import org.myProj.dpPractice.FacadePattern.Fund;
 import org.myProj.dpPractice.FactoryMethodDesignPattern.Ifactory;
 import org.myProj.dpPractice.FactoryMethodDesignPattern.OperationFactory;
 import org.myProj.dpPractice.ProtoType.ShapeCache;
@@ -44,6 +45,9 @@ public class App
 		}
         System.out.println( "Template Pattern:" );
         templatePattern();
+        System.out.println( "Facade Pattern:" );
+        facadePattern();
+
         
     }
     
@@ -103,5 +107,13 @@ public class App
       	GameTemplate game2 = new BaseBallGame();
     	game2.play();
     }
+    
+    public static void facadePattern(){
+    	Fund f1 = new Fund();
+    	f1.buyFund();
+    	System.out.println("And then we want to sell:");
+    	f1.sellFund();
+    }
+    
     
 }
