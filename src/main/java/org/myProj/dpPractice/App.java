@@ -1,5 +1,9 @@
 package org.myProj.dpPractice;
 
+import org.myProj.dpPractice.AbstractFactoryPattern.AbstractWidgetFactory;
+import org.myProj.dpPractice.AbstractFactoryPattern.GUIBuilder;
+import org.myProj.dpPractice.AbstractFactoryPattern.MacOSXWidgetFactory;
+import org.myProj.dpPractice.AbstractFactoryPattern.MsWindowsWidgetFactory;
 import org.myProj.dpPractice.BuilderPattern.Meal;
 import org.myProj.dpPractice.BuilderPattern.MealBuilder;
 import org.myProj.dpPractice.DecoratorDesignPattern.Circle;
@@ -27,119 +31,131 @@ import org.myProj.dpPractice.domain.SimpleOperation;
 /**
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "SIMPLE FACTORY:" );
-        simpleFactory();
-        System.out.println( "\n\nStregy Pattern:" );
-        strategyPattern();
-        System.out.println( "\n\nDecorator Pattern:" );
-        decoratorPattern();
-        System.out.println( "\n\nProxy Pattern:" );
-        proxyPattern();
-        System.out.println( "\n\nFactory Method Pattern:" );
-        factoryMethodPattern();
-        System.out.println( "\n\nProtoType Pattern:" );
-        try {
+public class App {
+	public static void main(String[] args) {
+		System.out.println("SIMPLE FACTORY:");
+		simpleFactory();
+		System.out.println("\n\nStregy Pattern:");
+		strategyPattern();
+		System.out.println("\n\nDecorator Pattern:");
+		decoratorPattern();
+		System.out.println("\n\nProxy Pattern:");
+		proxyPattern();
+		System.out.println("\n\nFactory Method Pattern:");
+		factoryMethodPattern();
+		System.out.println("\n\nProtoType Pattern:");
+		try {
 			protoTypePattern();
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}
-        System.out.println( "\n\nTemplate Pattern:" );
-        templatePattern();
-        System.out.println( "\n\nFacade Pattern:" );
-        facadePattern();
-        System.out.println( "\n\nBuilder Pattern:" );
-        builderPattern();
-        System.out.println( "\n\nObserver Pattern:" );
-        observerPattern();
-    }
-    
-    public static void simpleFactory(){
-        OperationFather op = SimpleOperation.getInstance("+");
-        op.setNumA(1);
-        op.setNumB(2);
-        System.out.println(op.getResult());
-    }
-    
-    public static void strategyPattern(){
-    	StrategyOperation strategyOperation = new StrategyOperation(new OperationAddV2());
-    	System.out.println("execute straegy(ADD) : "+strategyOperation.execStrategy(10, 5));
-    	strategyOperation = new StrategyOperation(new OperationSubV2());
-    	System.out.println("execute straegy(SUB) : "+strategyOperation.execStrategy(10, 5));
-    }
-    
-    public static void decoratorPattern(){
-    	Shape circle = new Circle();
-    	System.out.println("normal circle :");
-    	circle.draw();
-    	Shape coloredCircle = new ColorShapeDecorator(new Circle());
-    	System.out.println("circle with color:");
-    	coloredCircle.draw();
-    }
-    
-    public static void proxyPattern(){
-    	FtpFile file = new ProxyFtpFile("test.txt");
-    	file.unzip();
-    	System.out.println("....");
-    	file.unzip();
-    }
-    
-    public static void factoryMethodPattern(){
-    	OperationFactory factory = new OperationFactory();
-    	Ifactory f1 = factory.getOperation("ADD");
-    	f1.createOperaion();
-       	Ifactory f2 = factory.getOperation("SUB");
-       	f2.createOperaion();
-    }
-    
-    
-    public static void protoTypePattern() throws CloneNotSupportedException {
-        ShapeCache.loadCache();
-
-        ShapeProtoType clonedShape = (ShapeProtoType) ShapeCache.getShape("1");
-        System.out.println("Shape : " + clonedShape.getType());		
-
-        ShapeProtoType clonedShape2 = (ShapeProtoType) ShapeCache.getShape("2");
-        System.out.println("Shape : " + clonedShape2.getType());		
+		System.out.println("\n\nTemplate Pattern:");
+		templatePattern();
+		System.out.println("\n\nFacade Pattern:");
+		facadePattern();
+		System.out.println("\n\nBuilder Pattern:");
+		builderPattern();
+		System.out.println("\n\nObserver Pattern:");
+		observerPattern();
+		System.out.println("\n\nAbstract Factory Pattern:");
+		abstractFactoryPattern();
 
 	}
-    
-    public static void templatePattern(){
-    	GameTemplate game = new BasketBallGame();
-    	game.play();
-      	GameTemplate game2 = new BaseBallGame();
-    	game2.play();
-    }
-    
-    public static void facadePattern(){
-    	Fund f1 = new Fund();
-    	f1.buyFund();
-    	System.out.println("And then we want to sell:");
-    	f1.sellFund();
-    }
-    
-    public static void builderPattern(){
-    	MealBuilder mealBuilder = new MealBuilder();
-    	Meal nonVegMeal = mealBuilder.prepareMeal();
-        System.out.println("(User don't need to know how to pack the meal)");
-        System.out.println("Meal");
-        nonVegMeal.showItems();
-        System.out.println("Total Cost: " + nonVegMeal.getCost());
-    }
-    
-    public static void observerPattern(){
-    	Subject subject = new Subject();
 
-        new NewsObserver(subject);
-        new StockObserver(subject);
+	public static void simpleFactory() {
+		OperationFather op = SimpleOperation.getInstance("+");
+		op.setNumA(1);
+		op.setNumB(2);
+		System.out.println(op.getResult());
+	}
 
-        System.out.println("First state change: 15");	
-        subject.setState(15);
-        System.out.println("Second state change: 10");	
-        subject.setState(10);
-    	
-    }
+	public static void strategyPattern() {
+		StrategyOperation strategyOperation = new StrategyOperation(new OperationAddV2());
+		System.out.println("execute straegy(ADD) : " + strategyOperation.execStrategy(10, 5));
+		strategyOperation = new StrategyOperation(new OperationSubV2());
+		System.out.println("execute straegy(SUB) : " + strategyOperation.execStrategy(10, 5));
+	}
+
+	public static void decoratorPattern() {
+		Shape circle = new Circle();
+		System.out.println("normal circle :");
+		circle.draw();
+		Shape coloredCircle = new ColorShapeDecorator(new Circle());
+		System.out.println("circle with color:");
+		coloredCircle.draw();
+	}
+
+	public static void proxyPattern() {
+		FtpFile file = new ProxyFtpFile("test.txt");
+		file.unzip();
+		System.out.println("....");
+		file.unzip();
+	}
+
+	public static void factoryMethodPattern() {
+		OperationFactory factory = new OperationFactory();
+		Ifactory f1 = factory.getOperation("ADD");
+		f1.createOperaion();
+		Ifactory f2 = factory.getOperation("SUB");
+		f2.createOperaion();
+	}
+
+	public static void protoTypePattern() throws CloneNotSupportedException {
+		ShapeCache.loadCache();
+
+		ShapeProtoType clonedShape = (ShapeProtoType) ShapeCache.getShape("1");
+		System.out.println("Shape : " + clonedShape.getType());
+
+		ShapeProtoType clonedShape2 = (ShapeProtoType) ShapeCache.getShape("2");
+		System.out.println("Shape : " + clonedShape2.getType());
+
+	}
+
+	public static void templatePattern() {
+		GameTemplate game = new BasketBallGame();
+		game.play();
+		GameTemplate game2 = new BaseBallGame();
+		game2.play();
+	}
+
+	public static void facadePattern() {
+		Fund f1 = new Fund();
+		f1.buyFund();
+		System.out.println("And then we want to sell:");
+		f1.sellFund();
+	}
+
+	public static void builderPattern() {
+		MealBuilder mealBuilder = new MealBuilder();
+		Meal nonVegMeal = mealBuilder.prepareMeal();
+		System.out.println("(User don't need to know how to pack the meal)");
+		System.out.println("Meal");
+		nonVegMeal.showItems();
+		System.out.println("Total Cost: " + nonVegMeal.getCost());
+	}
+
+	public static void observerPattern() {
+		Subject subject = new Subject();
+		new NewsObserver(subject);
+		new StockObserver(subject);
+
+		System.out.println("First state change: 15");
+		subject.setState(15);
+		System.out.println("Second state change: 10");
+		subject.setState(10);
+	}
+	
+	public static void abstractFactoryPattern() {
+	    GUIBuilder builder = new GUIBuilder();
+	    AbstractWidgetFactory widgetFactory = null;
+	    String os =System.getProperty("os.name");
+	    if(os.startsWith("Mac")){
+	      widgetFactory  = new MacOSXWidgetFactory();
+	    } else {
+	      widgetFactory  = new MsWindowsWidgetFactory();
+	    }
+	    builder.buildWindow(widgetFactory);
+		
+	}
+	
 }

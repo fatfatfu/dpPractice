@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class
+        name="org.myProj.dpPractice.AbstractFactoryPattern.MacOsWindow"
+        x="191" y="156">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.myProj.dpPractice.AbstractFactoryPattern.Window"/>
+    </Class>
+    <Class
+        name="org.myProj.dpPractice.AbstractFactoryPattern.AbstractWidgetFactory"
+        x="636" y="58">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.myProj.dpPractice.ProtoType.ShapeProtoType" x="748" y="515">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="org.myProj.dpPractice.FactoryMethodDesignPattern.AddFactory"
+        x="277" y="458">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.myProj.dpPractice.FactoryMethodDesignPattern.Ifactory"/>
+    </Class>
+    <Class name="org.myProj.dpPractice.AbstractFactoryPattern.MSWindow"
+        x="368" y="158">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.myProj.dpPractice.AbstractFactoryPattern.Window"/>
+    </Class>
+    <Class
+        name="org.myProj.dpPractice.FactoryMethodDesignPattern.Ifactory"
+        x="396" y="323">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.myProj.dpPractice.ProtoType.CircleProtoType"
+        x="696" y="646">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.myProj.dpPractice.ProtoType.ShapeProtoType"/>
+    </Class>
+    <Class
+        name="org.myProj.dpPractice.AbstractFactoryPattern.MacOSXWidgetFactory"
+        x="763" y="155">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.myProj.dpPractice.AbstractFactoryPattern.AbstractWidgetFactory"/>
+    </Class>
+    <Class name="org.myProj.dpPractice.AbstractFactoryPattern.Window"
+        x="264" y="61">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="org.myProj.dpPractice.AbstractFactoryPattern.MsWindowsWidgetFactory"
+        x="541" y="158">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.myProj.dpPractice.AbstractFactoryPattern.AbstractWidgetFactory"/>
+    </Class>
+    <Class
+        name="org.myProj.dpPractice.AbstractFactoryPattern.GUIBuilder"
+        x="874" y="59">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="org.myProj.dpPractice.AbstractFactoryPattern.AbstractWidgetFactory"/>
+        <Communication destinationClassName="org.myProj.dpPractice.AbstractFactoryPattern.Window"/>
+    </Class>
+    <Class
+        name="org.myProj.dpPractice.FactoryMethodDesignPattern.SubFactory"
+        x="505" y="466">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.myProj.dpPractice.FactoryMethodDesignPattern.Ifactory"/>
+    </Class>
+    <Class name="org.myProj.dpPractice.ProtoType.SquareProtoType"
+        x="848" y="643">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.myProj.dpPractice.ProtoType.ShapeProtoType"/>
+    </Class>
+</ClassDiagram>
