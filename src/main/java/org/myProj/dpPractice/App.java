@@ -5,6 +5,8 @@ import org.myProj.dpPractice.DecoratorDesignPattern.ColorShapeDecorator;
 import org.myProj.dpPractice.DecoratorDesignPattern.Shape;
 import org.myProj.dpPractice.FactoryMethodDesignPattern.Ifactory;
 import org.myProj.dpPractice.FactoryMethodDesignPattern.OperationFactory;
+import org.myProj.dpPractice.ProtoType.ShapeCache;
+import org.myProj.dpPractice.ProtoType.ShapeProtoType;
 import org.myProj.dpPractice.ProxyDesignPattern.copy.FtpFile;
 import org.myProj.dpPractice.ProxyDesignPattern.copy.ProxyFtpFile;
 import org.myProj.dpPractice.StrategyDesignPattern.StrategyOperation;
@@ -30,7 +32,13 @@ public class App
         System.out.println( "Proxy Pattern:" );
         proxyPattern();
         System.out.println( "Factory Method Pattern:" );
-        proxyPattern();
+        factoryMethodPattern();
+        System.out.println( "ProtoType Pattern:" );
+        try {
+			protoTypePattern();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
         
     }
     
@@ -71,4 +79,17 @@ public class App
        	Ifactory f2 = factory.getOperation("SUB");
        	f2.createOperaion();
     }
+    
+    
+    public static void protoTypePattern() throws CloneNotSupportedException {
+        ShapeCache.loadCache();
+
+        ShapeProtoType clonedShape = (ShapeProtoType) ShapeCache.getShape("1");
+        System.out.println("Shape : " + clonedShape.getType());		
+
+        ShapeProtoType clonedShape2 = (ShapeProtoType) ShapeCache.getShape("2");
+        System.out.println("Shape : " + clonedShape2.getType());		
+
+	}
+    
 }
