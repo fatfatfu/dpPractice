@@ -10,6 +10,9 @@ import org.myProj.dpPractice.ProtoType.ShapeProtoType;
 import org.myProj.dpPractice.ProxyDesignPattern.copy.FtpFile;
 import org.myProj.dpPractice.ProxyDesignPattern.copy.ProxyFtpFile;
 import org.myProj.dpPractice.StrategyDesignPattern.StrategyOperation;
+import org.myProj.dpPractice.TemplatePattern.BaseBallGame;
+import org.myProj.dpPractice.TemplatePattern.BasketBallGame;
+import org.myProj.dpPractice.TemplatePattern.GameTemplate;
 import org.myProj.dpPractice.domain.OperationAddV2;
 import org.myProj.dpPractice.domain.OperationFather;
 import org.myProj.dpPractice.domain.OperationSubV2;
@@ -39,6 +42,8 @@ public class App
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}
+        System.out.println( "Template Pattern:" );
+        templatePattern();
         
     }
     
@@ -91,5 +96,12 @@ public class App
         System.out.println("Shape : " + clonedShape2.getType());		
 
 	}
+    
+    public static void templatePattern(){
+    	GameTemplate game = new BasketBallGame();
+    	game.play();
+      	GameTemplate game2 = new BaseBallGame();
+    	game2.play();
+    }
     
 }
