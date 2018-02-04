@@ -1,4 +1,4 @@
-package org.myProj.dpPractice.ProxyDesignPattern.copy;
+package org.myProj.dpPractice.ProxyDesignPattern;
 
 public class ProxyFtpFile implements FtpFile {
 	private String fileName;

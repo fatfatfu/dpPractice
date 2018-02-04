@@ -1,5 +1,7 @@
 package org.myProj.dpPractice;
 
+import org.myProj.dpPractice.BuilderPattern.Meal;
+import org.myProj.dpPractice.BuilderPattern.MealBuilder;
 import org.myProj.dpPractice.DecoratorDesignPattern.Circle;
 import org.myProj.dpPractice.DecoratorDesignPattern.ColorShapeDecorator;
 import org.myProj.dpPractice.DecoratorDesignPattern.Shape;
@@ -8,8 +10,8 @@ import org.myProj.dpPractice.FactoryMethodDesignPattern.Ifactory;
 import org.myProj.dpPractice.FactoryMethodDesignPattern.OperationFactory;
 import org.myProj.dpPractice.ProtoType.ShapeCache;
 import org.myProj.dpPractice.ProtoType.ShapeProtoType;
-import org.myProj.dpPractice.ProxyDesignPattern.copy.FtpFile;
-import org.myProj.dpPractice.ProxyDesignPattern.copy.ProxyFtpFile;
+import org.myProj.dpPractice.ProxyDesignPattern.FtpFile;
+import org.myProj.dpPractice.ProxyDesignPattern.ProxyFtpFile;
 import org.myProj.dpPractice.StrategyDesignPattern.StrategyOperation;
 import org.myProj.dpPractice.TemplatePattern.BaseBallGame;
 import org.myProj.dpPractice.TemplatePattern.BasketBallGame;
@@ -20,7 +22,6 @@ import org.myProj.dpPractice.domain.OperationSubV2;
 import org.myProj.dpPractice.domain.SimpleOperation;
 
 /**
- * Hello world!
  *
  */
 public class App 
@@ -47,7 +48,8 @@ public class App
         templatePattern();
         System.out.println( "Facade Pattern:" );
         facadePattern();
-
+        System.out.println( "Builder Pattern:" );
+        builderPattern();
         
     }
     
@@ -115,5 +117,11 @@ public class App
     	f1.sellFund();
     }
     
-    
+    public static void builderPattern(){
+    	MealBuilder mealBuilder = new MealBuilder();
+    	Meal nonVegMeal = mealBuilder.prepareMeal();
+        System.out.println("\n\n Meal");
+        nonVegMeal.showItems();
+        System.out.println("Total Cost: " + nonVegMeal.getCost());
+    }
 }
