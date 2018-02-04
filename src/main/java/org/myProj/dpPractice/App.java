@@ -8,6 +8,9 @@ import org.myProj.dpPractice.DecoratorDesignPattern.Shape;
 import org.myProj.dpPractice.FacadePattern.Fund;
 import org.myProj.dpPractice.FactoryMethodDesignPattern.Ifactory;
 import org.myProj.dpPractice.FactoryMethodDesignPattern.OperationFactory;
+import org.myProj.dpPractice.ObserverPattern.NewsObserver;
+import org.myProj.dpPractice.ObserverPattern.StockObserver;
+import org.myProj.dpPractice.ObserverPattern.Subject;
 import org.myProj.dpPractice.ProtoType.ShapeCache;
 import org.myProj.dpPractice.ProtoType.ShapeProtoType;
 import org.myProj.dpPractice.ProxyDesignPattern.FtpFile;
@@ -30,27 +33,28 @@ public class App
     {
         System.out.println( "SIMPLE FACTORY:" );
         simpleFactory();
-        System.out.println( "Stregy Pattern:" );
+        System.out.println( "\n\nStregy Pattern:" );
         strategyPattern();
-        System.out.println( "Decorator Pattern:" );
+        System.out.println( "\n\nDecorator Pattern:" );
         decoratorPattern();
-        System.out.println( "Proxy Pattern:" );
+        System.out.println( "\n\nProxy Pattern:" );
         proxyPattern();
-        System.out.println( "Factory Method Pattern:" );
+        System.out.println( "\n\nFactory Method Pattern:" );
         factoryMethodPattern();
-        System.out.println( "ProtoType Pattern:" );
+        System.out.println( "\n\nProtoType Pattern:" );
         try {
 			protoTypePattern();
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}
-        System.out.println( "Template Pattern:" );
+        System.out.println( "\n\nTemplate Pattern:" );
         templatePattern();
-        System.out.println( "Facade Pattern:" );
+        System.out.println( "\n\nFacade Pattern:" );
         facadePattern();
-        System.out.println( "Builder Pattern:" );
+        System.out.println( "\n\nBuilder Pattern:" );
         builderPattern();
-        
+        System.out.println( "\n\nObserver Pattern:" );
+        observerPattern();
     }
     
     public static void simpleFactory(){
@@ -120,8 +124,22 @@ public class App
     public static void builderPattern(){
     	MealBuilder mealBuilder = new MealBuilder();
     	Meal nonVegMeal = mealBuilder.prepareMeal();
-        System.out.println("\n\n Meal");
+        System.out.println("(User don't need to know how to pack the meal)");
+        System.out.println("Meal");
         nonVegMeal.showItems();
         System.out.println("Total Cost: " + nonVegMeal.getCost());
+    }
+    
+    public static void observerPattern(){
+    	Subject subject = new Subject();
+
+        new NewsObserver(subject);
+        new StockObserver(subject);
+
+        System.out.println("First state change: 15");	
+        subject.setState(15);
+        System.out.println("Second state change: 10");	
+        subject.setState(10);
+    	
     }
 }
