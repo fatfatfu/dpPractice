@@ -19,6 +19,10 @@ import org.myProj.dpPractice.ProtoType.ShapeCache;
 import org.myProj.dpPractice.ProtoType.ShapeProtoType;
 import org.myProj.dpPractice.ProxyDesignPattern.FtpFile;
 import org.myProj.dpPractice.ProxyDesignPattern.ProxyFtpFile;
+import org.myProj.dpPractice.StatePattern.Context;
+import org.myProj.dpPractice.StatePattern.ElevatorDownState;
+import org.myProj.dpPractice.StatePattern.ElevatorStopState;
+import org.myProj.dpPractice.StatePattern.ElevatorUpState;
 import org.myProj.dpPractice.StrategyDesignPattern.StrategyOperation;
 import org.myProj.dpPractice.TemplatePattern.BaseBallGame;
 import org.myProj.dpPractice.TemplatePattern.BasketBallGame;
@@ -59,6 +63,8 @@ public class App {
 		observerPattern();
 		System.out.println("\n\nAbstract Factory Pattern:");
 		abstractFactoryPattern();
+		System.out.println("\n\nState Pattern:");		
+		statePattern();
 
 	}
 
@@ -155,7 +161,18 @@ public class App {
 	      widgetFactory  = new MsWindowsWidgetFactory();
 	    }
 	    builder.buildWindow(widgetFactory);
-		
 	}
+	
+	public static void statePattern() {
+		System.out.println("WAITING....");
+		ElevatorStopState state = new ElevatorStopState();
+		Context context = new Context(state);
+		context.setFloor(0);
+		state.Handle(context);
+		context.setFloor(2);
+		state.Handle(context);
+		context.setFloor(10);
+		state.Handle(context);
+	}	
 	
 }
