@@ -168,11 +168,11 @@ public class App {
 		ElevatorStopState state = new ElevatorStopState();
 		Context context = new Context(state);
 		context.setFloor(0);
-		state.Handle(context);
+		state.handle(context);
 		context.setFloor(2);
-		state.Handle(context);
+		state.handle(context);
 		context.setFloor(10);
-		state.Handle(context);
+		state.handle(context);
 	}	
 	
 }

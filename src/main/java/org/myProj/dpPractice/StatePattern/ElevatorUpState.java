@@ -3,7 +3,7 @@ package org.myProj.dpPractice.StatePattern;
 public class ElevatorUpState implements State{
 
 	@Override
-	public void Handle(Context context) {
+	public void handle(Context context) {
 		
 		context.setState(this);
 		if(context.getFloor()<10){
@@ -12,7 +12,7 @@ public class ElevatorUpState implements State{
 			if(context.getFloor()==10){
 				System.out.println("Top floor");
 				context.setState(new ElevatorDownState());
-				context.getState().Handle(context);
+				context.getState().handle(context);
 			}
 		}
 	}

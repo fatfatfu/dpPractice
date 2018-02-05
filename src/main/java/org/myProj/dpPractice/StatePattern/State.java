@@ -1,7 +1,7 @@
 package org.myProj.dpPractice.StatePattern;
 
 public interface State {
-	public void Handle(Context context);
+	public void handle(Context context);
 
 	public String nowState();
 }
