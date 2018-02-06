@@ -4,6 +4,9 @@ import org.myProj.dpPractice.AbstractFactoryPattern.AbstractWidgetFactory;
 import org.myProj.dpPractice.AbstractFactoryPattern.GUIBuilder;
 import org.myProj.dpPractice.AbstractFactoryPattern.MacOSXWidgetFactory;
 import org.myProj.dpPractice.AbstractFactoryPattern.MsWindowsWidgetFactory;
+import org.myProj.dpPractice.AdapterPattern.HomeComingMovie;
+import org.myProj.dpPractice.AdapterPattern.IronMan;
+import org.myProj.dpPractice.AdapterPattern.SpiderMan;
 import org.myProj.dpPractice.BuilderPattern.Meal;
 import org.myProj.dpPractice.BuilderPattern.MealBuilder;
 import org.myProj.dpPractice.DecoratorDesignPattern.Circle;
@@ -65,7 +68,8 @@ public class App {
 		abstractFactoryPattern();
 		System.out.println("\n\nState Pattern:");		
 		statePattern();
-
+		System.out.println("\n\nAdapter Pattern:");	
+		adapterPattern();
 	}
 
 	public static void simpleFactory() {
@@ -174,5 +178,21 @@ public class App {
 		context.setFloor(10);
 		state.handle(context);
 	}	
+	
+	public static void adapterPattern() {
+		IronMan ironman = new IronMan();
+		SpiderMan spiderman = new SpiderMan();
+		HomeComingMovie spidermanHomeComing = new HomeComingMovie(ironman);
+		System.out.println("ironman movie :");
+		ironman.superability();
+		ironman.movie();
+		System.out.println("spiderman movie :");
+		spiderman.power();
+		spiderman.movie();
+		//iron man not showing in spider man movie
+		System.out.println("HomeComing movie as Adapter:");
+		spidermanHomeComing.power();
+		spidermanHomeComing.movie();
+	}
 	
 }
