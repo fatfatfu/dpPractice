@@ -9,6 +9,9 @@ import org.myProj.dpPractice.AdapterPattern.IronMan;
 import org.myProj.dpPractice.AdapterPattern.SpiderMan;
 import org.myProj.dpPractice.BuilderPattern.Meal;
 import org.myProj.dpPractice.BuilderPattern.MealBuilder;
+import org.myProj.dpPractice.CompositePattern.ConcreteCompany;
+import org.myProj.dpPractice.CompositePattern.HRDepartment;
+import org.myProj.dpPractice.CompositePattern.ITDepartment;
 import org.myProj.dpPractice.DecoratorDesignPattern.Circle;
 import org.myProj.dpPractice.DecoratorDesignPattern.ColorShapeDecorator;
 import org.myProj.dpPractice.DecoratorDesignPattern.Shape;
@@ -72,6 +75,8 @@ public class App {
 		adapterPattern();
 		System.out.println("\n\nMemento Pattern:");
 		mementoPattern();
+		System.out.println("\n\nComposite Pattern:");
+		compositePattern();
 	}
 
 	public static void simpleFactory() {
@@ -212,8 +217,19 @@ public class App {
 		originator.getStateFromMemento(careTaker.get(1));
 		System.out.println("Second saved State: " + originator.getState());
 		System.out.println("Third State will throw exection: size = " + careTaker.getMementoList().size());	
-			
+	}
+	
+	public static void compositePattern() {
+		ConcreteCompany root = new ConcreteCompany("總公司");
+		root.add(new HRDepartment("總公司人資部"));
+		root.add(new ITDepartment("總公司資訊部"));
 		
+		ConcreteCompany branch = new ConcreteCompany("深圳分公司");
+		branch.add(new HRDepartment("深圳分公司人資部"));
+		branch.add(new ITDepartment("深圳分公司資訊部"));
+		root.add(branch);
+		root.display(1);
+		root.lineDuties();
 	}
 
 }
