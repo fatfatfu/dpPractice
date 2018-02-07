@@ -15,6 +15,8 @@ import org.myProj.dpPractice.DecoratorDesignPattern.Shape;
 import org.myProj.dpPractice.FacadePattern.Fund;
 import org.myProj.dpPractice.FactoryMethodDesignPattern.Ifactory;
 import org.myProj.dpPractice.FactoryMethodDesignPattern.OperationFactory;
+import org.myProj.dpPractice.MementoPattern.CareTaker;
+import org.myProj.dpPractice.MementoPattern.Originator;
 import org.myProj.dpPractice.ObserverPattern.NewsObserver;
 import org.myProj.dpPractice.ObserverPattern.StockObserver;
 import org.myProj.dpPractice.ObserverPattern.Subject;
@@ -23,9 +25,7 @@ import org.myProj.dpPractice.ProtoType.ShapeProtoType;
 import org.myProj.dpPractice.ProxyDesignPattern.FtpFile;
 import org.myProj.dpPractice.ProxyDesignPattern.ProxyFtpFile;
 import org.myProj.dpPractice.StatePattern.Context;
-import org.myProj.dpPractice.StatePattern.ElevatorDownState;
 import org.myProj.dpPractice.StatePattern.ElevatorStopState;
-import org.myProj.dpPractice.StatePattern.ElevatorUpState;
 import org.myProj.dpPractice.StrategyDesignPattern.StrategyOperation;
 import org.myProj.dpPractice.TemplatePattern.BaseBallGame;
 import org.myProj.dpPractice.TemplatePattern.BasketBallGame;
@@ -66,10 +66,12 @@ public class App {
 		observerPattern();
 		System.out.println("\n\nAbstract Factory Pattern:");
 		abstractFactoryPattern();
-		System.out.println("\n\nState Pattern:");		
+		System.out.println("\n\nState Pattern:");
 		statePattern();
-		System.out.println("\n\nAdapter Pattern:");	
+		System.out.println("\n\nAdapter Pattern:");
 		adapterPattern();
+		System.out.println("\n\nMemento Pattern:");
+		mementoPattern();
 	}
 
 	public static void simpleFactory() {
@@ -154,19 +156,19 @@ public class App {
 		System.out.println("Second state change: 10");
 		subject.setState(10);
 	}
-	
+
 	public static void abstractFactoryPattern() {
-	    GUIBuilder builder = new GUIBuilder();
-	    AbstractWidgetFactory widgetFactory = null;
-	    String os =System.getProperty("os.name");
-	    if(os.startsWith("Mac")){
-	      widgetFactory  = new MacOSXWidgetFactory();
-	    } else {
-	      widgetFactory  = new MsWindowsWidgetFactory();
-	    }
-	    builder.buildWindow(widgetFactory);
+		GUIBuilder builder = new GUIBuilder();
+		AbstractWidgetFactory widgetFactory = null;
+		String os = System.getProperty("os.name");
+		if (os.startsWith("Mac")) {
+			widgetFactory = new MacOSXWidgetFactory();
+		} else {
+			widgetFactory = new MsWindowsWidgetFactory();
+		}
+		builder.buildWindow(widgetFactory);
 	}
-	
+
 	public static void statePattern() {
 		System.out.println("WAITING....");
 		ElevatorStopState state = new ElevatorStopState();
@@ -177,8 +179,8 @@ public class App {
 		state.handle(context);
 		context.setFloor(10);
 		state.handle(context);
-	}	
-	
+	}
+
 	public static void adapterPattern() {
 		IronMan ironman = new IronMan();
 		SpiderMan spiderman = new SpiderMan();
@@ -189,10 +191,29 @@ public class App {
 		System.out.println("spiderman movie :");
 		spiderman.power();
 		spiderman.movie();
-		//iron man not showing in spider man movie
+		// iron man not showing in spider man movie
 		System.out.println("HomeComing movie as Adapter:");
 		spidermanHomeComing.power();
 		spidermanHomeComing.movie();
 	}
-	
+
+	public static void mementoPattern() {
+		Originator originator = new Originator();
+		CareTaker careTaker = new CareTaker();
+		originator.setState("State1");
+		originator.setState("State2");
+		careTaker.add(originator.createMemento());
+		originator.setState("State3");
+		careTaker.add(originator.createMemento());
+		originator.setState("State4");
+		System.out.println("Current State: " + originator.getState());
+		originator.getStateFromMemento(careTaker.get(0));
+		System.out.println("First saved State: " + originator.getState());
+		originator.getStateFromMemento(careTaker.get(1));
+		System.out.println("Second saved State: " + originator.getState());
+		System.out.println("Third State will throw exection: size = " + careTaker.getMementoList().size());	
+			
+		
+	}
+
 }
