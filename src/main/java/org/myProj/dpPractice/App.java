@@ -29,6 +29,9 @@ import org.myProj.dpPractice.ProxyDesignPattern.FtpFile;
 import org.myProj.dpPractice.ProxyDesignPattern.ProxyFtpFile;
 import org.myProj.dpPractice.StatePattern.Context;
 import org.myProj.dpPractice.StatePattern.ElevatorStopState;
+import org.myProj.dpPractice.StrategyDesignPattern.BreakingBall;
+import org.myProj.dpPractice.StrategyDesignPattern.CurveBall;
+import org.myProj.dpPractice.StrategyDesignPattern.Slider;
 import org.myProj.dpPractice.StrategyDesignPattern.StrategyOperation;
 import org.myProj.dpPractice.TemplatePattern.BaseBallGame;
 import org.myProj.dpPractice.TemplatePattern.BasketBallGame;
@@ -87,10 +90,20 @@ public class App {
 	}
 
 	public static void strategyPattern() {
-		StrategyOperation strategyOperation = new StrategyOperation(new OperationAddV2());
-		System.out.println("execute straegy(ADD) : " + strategyOperation.execStrategy(10, 5));
-		strategyOperation = new StrategyOperation(new OperationSubV2());
-		System.out.println("execute straegy(SUB) : " + strategyOperation.execStrategy(10, 5));
+		System.out.println("catcher want a horizontal slider ");
+		BreakingBall pitching= new BreakingBall(new Slider());
+		System.out.println("pitcher read the signal");
+		System.out.println(pitching.pitch("horizontal", "right"));
+		System.out.println("catcher want a vertical slider ");
+		System.out.println("pitcher read the signal");
+		System.out.println(pitching.pitch("vertical", "right"));
+		System.out.println("catcher want a horizontal curve ball ");
+		pitching= new BreakingBall(new CurveBall());
+		System.out.println("pitcher read the signal");
+		System.out.println(pitching.pitch("horizontal", "right"));
+		System.out.println("catcher want a vertical slider ");
+		System.out.println("pitcher read the signal");
+		System.out.println(pitching.pitch("vertical", "right"));
 	}
 
 	public static void decoratorPattern() {
