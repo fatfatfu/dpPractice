@@ -18,6 +18,9 @@ import org.myProj.dpPractice.DecoratorDesignPattern.Shape;
 import org.myProj.dpPractice.FacadePattern.Fund;
 import org.myProj.dpPractice.FactoryMethodDesignPattern.Ifactory;
 import org.myProj.dpPractice.FactoryMethodDesignPattern.OperationFactory;
+import org.myProj.dpPractice.IteratorPattern.ConcreteIterator;
+import org.myProj.dpPractice.IteratorPattern.ConcreteIteratorDesc;
+import org.myProj.dpPractice.IteratorPattern.Iterator;
 import org.myProj.dpPractice.MementoPattern.CareTaker;
 import org.myProj.dpPractice.MementoPattern.Originator;
 import org.myProj.dpPractice.ObserverPattern.NewsObserver;
@@ -32,13 +35,13 @@ import org.myProj.dpPractice.StatePattern.ElevatorStopState;
 import org.myProj.dpPractice.StrategyDesignPattern.BreakingBall;
 import org.myProj.dpPractice.StrategyDesignPattern.CurveBall;
 import org.myProj.dpPractice.StrategyDesignPattern.Slider;
-import org.myProj.dpPractice.StrategyDesignPattern.StrategyOperation;
+//import org.myProj.dpPractice.StrategyDesignPattern.StrategyOperation;
 import org.myProj.dpPractice.TemplatePattern.BaseBallGame;
 import org.myProj.dpPractice.TemplatePattern.BasketBallGame;
 import org.myProj.dpPractice.TemplatePattern.GameTemplate;
-import org.myProj.dpPractice.domain.OperationAddV2;
+//import org.myProj.dpPractice.domain.OperationAddV2;
 import org.myProj.dpPractice.domain.OperationFather;
-import org.myProj.dpPractice.domain.OperationSubV2;
+//import org.myProj.dpPractice.domain.OperationSubV2;
 import org.myProj.dpPractice.domain.SimpleOperation;
 
 /**
@@ -80,6 +83,9 @@ public class App {
 		mementoPattern();
 		System.out.println("\n\nComposite Pattern:");
 		compositePattern();
+		System.out.println("\n\nIterater Pattern:");
+		iteratorPattern();
+		
 	}
 
 	public static void simpleFactory() {
@@ -245,4 +251,17 @@ public class App {
 		root.lineDuties();
 	}
 
+	public static void iteratorPattern() {
+		ConcreteIterator cit = new ConcreteIterator();
+		for(Iterator it = cit.getIterator(); it.hasNext();){
+			String name = (String) it.next();
+			System.out.println(it.getCount()+" element is :"+name);
+		}
+		ConcreteIteratorDesc citdesc = new ConcreteIteratorDesc();
+		for(Iterator it = citdesc.getIterator(); it.hasNext();){
+			String name = (String) it.next();
+			System.out.println(it.getCount()+" element is :"+name);
+		}
+	}
+	
 }
