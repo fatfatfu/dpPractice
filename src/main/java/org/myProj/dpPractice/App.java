@@ -7,6 +7,11 @@ import org.myProj.dpPractice.AbstractFactoryPattern.MsWindowsWidgetFactory;
 import org.myProj.dpPractice.AdapterPattern.HomeComingMovie;
 import org.myProj.dpPractice.AdapterPattern.IronMan;
 import org.myProj.dpPractice.AdapterPattern.SpiderMan;
+import org.myProj.dpPractice.BridgePattern.Iphone;
+import org.myProj.dpPractice.BridgePattern.MobileBrand;
+import org.myProj.dpPractice.BridgePattern.MobileGame;
+import org.myProj.dpPractice.BridgePattern.MobileTool;
+import org.myProj.dpPractice.BridgePattern.SamSung;
 import org.myProj.dpPractice.BuilderPattern.Meal;
 import org.myProj.dpPractice.BuilderPattern.MealBuilder;
 import org.myProj.dpPractice.CompositePattern.ConcreteCompany;
@@ -88,7 +93,8 @@ public class App {
 		iteratorPattern();
 		System.out.println("\n\nSingleton Pattern:");
 		singletonPattern();
-		
+		System.out.println("\n\nBridge Pattern:");
+		bridgePattern();
 		
 	}
 
@@ -270,7 +276,6 @@ public class App {
 	
 	public static void singletonPattern() {
 	      //SingleObject object = new SingleObject();
-
 	      SingleObject object = SingleObject.getInstance();
 	      object.showMessage();
 	      SingleObject object2 = SingleObject.getInstance();
@@ -278,7 +283,16 @@ public class App {
 	      if(object==object2){
 	    	  System.out.println("same instance");
 	      }
-	      
 	}
 	
+	public static void bridgePattern() {
+			MobileBrand iphone8 = new Iphone("angry bird",new MobileGame());
+			iphone8.run();
+			MobileBrand samsung = new SamSung("angry bird",new MobileGame());
+			samsung.run();
+			iphone8 = new Iphone("calender",new MobileTool());
+			iphone8.run();
+			samsung = new SamSung("calender",new MobileTool());
+			samsung.run();
+	}
 }
