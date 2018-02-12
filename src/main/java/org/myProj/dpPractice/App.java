@@ -30,6 +30,7 @@ import org.myProj.dpPractice.ProtoType.ShapeCache;
 import org.myProj.dpPractice.ProtoType.ShapeProtoType;
 import org.myProj.dpPractice.ProxyDesignPattern.FtpFile;
 import org.myProj.dpPractice.ProxyDesignPattern.ProxyFtpFile;
+import org.myProj.dpPractice.SingletonPattern.SingleObject;
 import org.myProj.dpPractice.StatePattern.Context;
 import org.myProj.dpPractice.StatePattern.ElevatorStopState;
 import org.myProj.dpPractice.StrategyDesignPattern.BreakingBall;
@@ -85,6 +86,9 @@ public class App {
 		compositePattern();
 		System.out.println("\n\nIterater Pattern:");
 		iteratorPattern();
+		System.out.println("\n\nSingleton Pattern:");
+		singletonPattern();
+		
 		
 	}
 
@@ -262,6 +266,19 @@ public class App {
 			String name = (String) it.next();
 			System.out.println(it.getCount()+" element is :"+name);
 		}
+	}
+	
+	public static void singletonPattern() {
+	      //SingleObject object = new SingleObject();
+
+	      SingleObject object = SingleObject.getInstance();
+	      object.showMessage();
+	      SingleObject object2 = SingleObject.getInstance();
+	      object2.showMessage();
+	      if(object==object2){
+	    	  System.out.println("same instance");
+	      }
+	      
 	}
 	
 }
