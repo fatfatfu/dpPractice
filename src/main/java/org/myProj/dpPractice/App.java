@@ -14,6 +14,14 @@ import org.myProj.dpPractice.BridgePattern.MobileTool;
 import org.myProj.dpPractice.BridgePattern.SamSung;
 import org.myProj.dpPractice.BuilderPattern.Meal;
 import org.myProj.dpPractice.BuilderPattern.MealBuilder;
+import org.myProj.dpPractice.ChainOfResbosponibilityPattern.AbstractPosition;
+import org.myProj.dpPractice.ChainOfResbosponibilityPattern.Normalworker;
+import org.myProj.dpPractice.ChainOfResbosponibilityPattern.President;
+import org.myProj.dpPractice.ChainOfResbosponibilityPattern.Secretary;
+import org.myProj.dpPractice.CommandPattern.Broker;
+import org.myProj.dpPractice.CommandPattern.BuyStock;
+import org.myProj.dpPractice.CommandPattern.SellStock;
+import org.myProj.dpPractice.CommandPattern.StockCommand;
 import org.myProj.dpPractice.CompositePattern.ConcreteCompany;
 import org.myProj.dpPractice.CompositePattern.HRDepartment;
 import org.myProj.dpPractice.CompositePattern.ITDepartment;
@@ -26,6 +34,7 @@ import org.myProj.dpPractice.FactoryMethodDesignPattern.OperationFactory;
 import org.myProj.dpPractice.IteratorPattern.ConcreteIterator;
 import org.myProj.dpPractice.IteratorPattern.ConcreteIteratorDesc;
 import org.myProj.dpPractice.IteratorPattern.Iterator;
+import org.myProj.dpPractice.MediatorPattern.User;
 import org.myProj.dpPractice.MementoPattern.CareTaker;
 import org.myProj.dpPractice.MementoPattern.Originator;
 import org.myProj.dpPractice.ObserverPattern.NewsObserver;
@@ -95,7 +104,12 @@ public class App {
 		singletonPattern();
 		System.out.println("\n\nBridge Pattern:");
 		bridgePattern();
-		
+		System.out.println("\n\nCommand Pattern:");
+		commandPattern();
+		System.out.println("\n\nChain Of Responsibility Pattern:");
+		chainResponsibilityPattern();
+		System.out.println("\n\nMediator Pattern:");
+		mediatorPattern();
 	}
 
 	public static void simpleFactory() {
@@ -107,14 +121,14 @@ public class App {
 
 	public static void strategyPattern() {
 		System.out.println("catcher want a horizontal slider ");
-		BreakingBall pitching= new BreakingBall(new Slider());
+		BreakingBall pitching = new BreakingBall(new Slider());
 		System.out.println("pitcher read the signal");
 		System.out.println(pitching.pitch("horizontal", "right"));
 		System.out.println("catcher want a vertical slider ");
 		System.out.println("pitcher read the signal");
 		System.out.println(pitching.pitch("vertical", "right"));
 		System.out.println("catcher want a horizontal curve ball ");
-		pitching= new BreakingBall(new CurveBall());
+		pitching = new BreakingBall(new CurveBall());
 		System.out.println("pitcher read the signal");
 		System.out.println(pitching.pitch("horizontal", "right"));
 		System.out.println("catcher want a vertical slider ");
@@ -245,14 +259,14 @@ public class App {
 		System.out.println("First saved State: " + originator.getState());
 		originator.getStateFromMemento(careTaker.get(1));
 		System.out.println("Second saved State: " + originator.getState());
-		System.out.println("Third State will throw exection: size = " + careTaker.getMementoList().size());	
+		System.out.println("Third State will throw exection: size = " + careTaker.getMementoList().size());
 	}
-	
+
 	public static void compositePattern() {
 		ConcreteCompany root = new ConcreteCompany("總公司");
 		root.add(new HRDepartment("總公司人資部"));
 		root.add(new ITDepartment("總公司資訊部"));
-		
+
 		ConcreteCompany branch = new ConcreteCompany("深圳分公司");
 		branch.add(new HRDepartment("深圳分公司人資部"));
 		branch.add(new ITDepartment("深圳分公司資訊部"));
@@ -263,36 +277,74 @@ public class App {
 
 	public static void iteratorPattern() {
 		ConcreteIterator cit = new ConcreteIterator();
-		for(Iterator it = cit.getIterator(); it.hasNext();){
+		for (Iterator it = cit.getIterator(); it.hasNext();) {
 			String name = (String) it.next();
-			System.out.println(it.getCount()+" element is :"+name);
+			System.out.println(it.getCount() + " element is :" + name);
 		}
 		ConcreteIteratorDesc citdesc = new ConcreteIteratorDesc();
-		for(Iterator it = citdesc.getIterator(); it.hasNext();){
+		for (Iterator it = citdesc.getIterator(); it.hasNext();) {
 			String name = (String) it.next();
-			System.out.println(it.getCount()+" element is :"+name);
+			System.out.println(it.getCount() + " element is :" + name);
 		}
 	}
-	
+
 	public static void singletonPattern() {
-	      //SingleObject object = new SingleObject();
-	      SingleObject object = SingleObject.getInstance();
-	      object.showMessage();
-	      SingleObject object2 = SingleObject.getInstance();
-	      object2.showMessage();
-	      if(object==object2){
-	    	  System.out.println("same instance");
-	      }
+		// SingleObject object = new SingleObject();
+		SingleObject object = SingleObject.getInstance();
+		object.showMessage();
+		SingleObject object2 = SingleObject.getInstance();
+		object2.showMessage();
+		if (object == object2) {
+			System.out.println("same instance");
+		}
 	}
-	
+
 	public static void bridgePattern() {
-			MobileBrand iphone8 = new Iphone("angry bird",new MobileGame());
-			iphone8.run();
-			MobileBrand samsung = new SamSung("angry bird",new MobileGame());
-			samsung.run();
-			iphone8 = new Iphone("calender",new MobileTool());
-			iphone8.run();
-			samsung = new SamSung("calender",new MobileTool());
-			samsung.run();
+		MobileBrand iphone8 = new Iphone("angry bird", new MobileGame());
+		iphone8.run();
+		MobileBrand samsung = new SamSung("angry bird", new MobileGame());
+		samsung.run();
+		iphone8 = new Iphone("calender", new MobileTool());
+		iphone8.run();
+		samsung = new SamSung("calender", new MobileTool());
+		samsung.run();
+	}
+
+	public static void commandPattern() {
+		StockCommand abcStock = new StockCommand();
+
+		BuyStock buyStockOrder = new BuyStock(abcStock);
+		SellStock sellStockOrder = new SellStock(abcStock);
+
+		Broker broker = new Broker();
+		broker.takeOrder(buyStockOrder);
+		broker.takeOrder(sellStockOrder);
+
+		broker.placeOrders();
+	}
+
+	private static AbstractPosition getChainOfPostion() {
+		AbstractPosition stage1 = new Normalworker(AbstractPosition.WORKER);
+		AbstractPosition stage2 = new Secretary(AbstractPosition.SECRETARY);
+		AbstractPosition stage3 = new President(AbstractPosition.BOSS);
+		stage1.setNextPos(stage2);
+		stage2.setNextPos(stage3);
+
+		return stage1;
+	}
+
+	public static void chainResponsibilityPattern() {
+		AbstractPosition postionChain = getChainOfPostion();
+		postionChain.logMessage(AbstractPosition.WORKER, "一般經辦送出公文");
+		postionChain.logMessage(AbstractPosition.SECRETARY, "秘書送出公文");
+		postionChain.logMessage(AbstractPosition.BOSS, "總裁簽核");
+	}
+
+	public static void mediatorPattern() {
+		User user1 = new User("user1");
+		User user2 = new User("user2");
+
+		user1.sendMessage("Hi!!");
+		user2.sendMessage("Hello! i don want to talk!");
 	}
 }
